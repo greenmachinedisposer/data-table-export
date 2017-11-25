@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<head>
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css" rel="stylesheet">
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
+    <script>
+        $( document ).ready( function() {
+
+            $( '#users_table' ).DataTable( {
+                "fnDrawCallback":function () {
+                    var table = $('#users_table').DataTable();
+                    if (table.data().length === 0)
+                        table.buttons('.buttons-html5').disable();
+                    else
+                        table.buttons('.buttons-html5').enable();
+                    $('.dt-buttons').hide();
+
+
+
+                },
+
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'csvHtml5',
+                        text: 'Copy all data',
+                        filename:'Jurol.csv',
+                        header:false,
+                        bBomInc: true,
+                        exportOptions: {
+                            modifier: {
+                                search: 'none'
+                            }
+                        }
+                    }
+                ],
+                "data": [
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5],
+                    [1,2,3,4,5]
+
+                ]
+            });
+
+            $('#export-btn').on("click",function () {
+                $('.buttons-csv').click();
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+<table class="display dataTable" id="users_table">
+    <thead>
+    <tr>
+        <th>User Id</th>
+        <th>User Name</th>
+        <th>User1</th>
+        <th>User2</th>
+        <th>User3</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+<div>
+    <input type="button" id="export-btn" value="Export"></div>
+</body>
+</html>
